@@ -38,13 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 let word = findRandomWord(char);
                 // Check if it's not the last character and the next character is not a space to add a comma
                 if (index < array.length - 1 && array[index + 1] !== ' ') {
-                    word += ',';
+                    word += ', ';
                 }
                 return word;
             } else {
                 return char;
             }
         });
+
+        return wordsArray.join('');
+    }
+});
+
 </script>
 </head>
 <body>
