@@ -31,18 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Generate the words separated by a comma
-        const generatedWords = inputText.split('').map(letter => {
-            if (letter.toLowerCase() != letter.toUpperCase()) { // Check if the character is a letter
-                return findRandomWord(letter);
+// Process each character, skip spaces for word generation, maintain original spaces
+        const wordsArray = inputText.split('').map((char, index, array) => {
+            if (char === ' ') return char; // Maintain space without adding a comma
+            if (char.toLowerCase() != char.toUpperCase()) { // Check if the character is a letter
+                let word = findRandomWord(char);
+                // Check if it's not the last character and the next character is not a space to add a comma
+                if (index < array.length - 1 && array[index + 1] !== ' ') {
+                    word += ',';
+                }
+                return word;
             } else {
-                return letter;
+                return char;
             }
-        }).join(', ');
-
-        return generatedWords;
-    }
-});
+        });
 </script>
 </head>
 <body>
