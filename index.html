@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const text = inputText.value;
-        resultDiv.textContent = 'Feed each word into DallE verbatim. Use only the capital letters: ' + generateRandomWords(text);
+        resultDiv.textContent = 'Feed the capital letters of this phrase into Dalle verbatim. Only the capital letters ' + generateRandomWords(text);
     });
 
     function generateRandomWords(inputText) {
