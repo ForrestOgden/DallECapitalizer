@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DALL·E 3 Cap Converter</title>
+<title>Random Word Generator</title>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('wordForm');
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const text = inputText.value;
-        resultDiv.textContent = 'Feed the capital letters of this phrase into Dalle verbatim. Only the capital letters ' + generateRandomWords(text);
+        resultDiv.textContent = 'Feed ONLY the first letter of each word to Dalle: ' + generateRandomWords(text);
     });
 
     function generateRandomWords(inputText) {
@@ -31,19 +31,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        return inputText.split('').map(letter => {
+        // Generate the words separated by a comma
+        const generatedWords = inputText.split('').map(letter => {
             if (letter.toLowerCase() != letter.toUpperCase()) { // Check if the character is a letter
                 return findRandomWord(letter);
             } else {
                 return letter;
             }
-        }).join(' ');
+        }).join(', ');
+
+        return generatedWords;
     }
 });
 </script>
 </head>
 <body>
-<h2>DALL·E 3 Capital Letter Converter</h2>
+<h2>Random Word Generator</h2>
 <form id="wordForm">
     <label for="inputText">Enter Text:</label>
     <input type="text" id="inputText" required>
